@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>prototype chain</title>
+</head>
+<body>
+
+  <script type="text/javascript">
+
+    (function() {
+      setTimeout(test_factorial, 1000);
+    })()
+    
+    var REPS = 2000000;  
+    
+    function test_factorial()
+    {
+      var start, end, i, a, 
+          reps = REPS;
+      
+      start = +new Date();
+      for(i=0; i < reps; i++)
+        factorial(5)
+      end = +new Date;
+      
+      console.log("test_factorial: " + (end-start));
+      
+      setTimeout(test_cached_factorial, 1000);
+    }
+    
+    
+    function test_cached_factorial()
+    {
+      var start, end, i, a, 
+          reps = REPS;
+      
+      start = +new Date();
+      for(i=0; i < reps; i++)
+        cached_factorial(5);
+      end = +new Date;
+      
+      console.log("test_cached_factorial: " + (end-start));  
+    }
+    
+
+    function factorial(n) {
+      if(n == 0) return 1;
+      else return n * factorial(n-1);
+    }
+
+
+    function cached_factorial(n) {     
+      
+      if(!cached_factorial.cache) 
+        cached_factorial.cache = {0: 1, 1: 1}
+        
+      if(cached_factorial.cache.hasOwnProperty(n)) 
+        cached_factorial.cache[n] = n*cached_factorial(n-1);
+      
+      return cached_factorial.cache[n];
+    }
+  
+  </script>
+
+</body>
+</html>

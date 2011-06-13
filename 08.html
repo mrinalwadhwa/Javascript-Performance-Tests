@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>scope chain</title>
+</head>
+<body>
+
+  <script type="text/javascript">
+
+    (function() {
+      setTimeout(test_local_variable_read, 1000);
+    })()
+    
+    
+    
+    var REPS = 20000000;
+    
+    
+    function test_local_variable_read()
+    {
+      var start, end, i, a, 
+          reps = REPS,
+          localVariable = 100;
+      
+      start = +new Date();
+      for(i=0; i < reps; i++)
+      {
+        a = localVariable;
+      }
+      end = +new Date;
+      
+      console.log("test_local_variable_read: " + (end-start));
+      
+      setTimeout(test_local_variable_write, 1000);
+    }
+    
+    
+    function test_local_variable_write()
+    {
+      var start, end, i, a, 
+          reps = REPS,
+          localVariable = 100;
+      
+      start = +new Date();
+      for(i=0; i < reps; i++)
+      {
+        localVariable = 200;
+      }
+      end = +new Date;
+      
+      console.log("test_local_variable_write: " + (end-start));
+      
+      setTimeout(test_global_variable_read, 1000);
+    }
+    
+    
+    
+    var globalVariable = 100;
+    
+    
+    function test_global_variable_read()
+    {
+      var start, end, i, a, 
+          reps = REPS;
+      
+      start = +new Date();
+      for(i=0; i < reps; i++)
+      {
+        a = globalVariable;
+      }
+      end = +new Date;
+      
+      console.log("test_global_variable_read: " + (end-start));
+      
+      setTimeout(test_global_variable_write, 1000);
+    }
+    
+    
+    function test_global_variable_write()
+    {
+      var start, end, i, a, 
+          reps = REPS;
+      
+      start = +new Date();
+      for(i=0; i < reps; i++)
+      {
+        globalVariable = 200;
+      }
+      end = +new Date;
+      
+      console.log("test_global_variable_write: " + (end-start));
+    }
+    
+    
+    
+    
+    
+    
+    
+  
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>scope chain: closures</title>
+</head>
+<body>
+
+  <script type="text/javascript">
+
+    (function() {
+      setTimeout(test_global_variable_read, 1000);
+    })()
+    
+    
+    
+    var REPS = 20000000;
+    var globalVariable = 100;
+    
+    
+    function test_global_variable_read()
+    {
+      var start, end, i, a, 
+          reps = REPS;
+      
+      start = +new Date();
+      for(i=0; i < reps; i++)
+      {
+        a = globalVariable;
+      }
+      end = +new Date;
+      
+      console.log("test_global_variable_read: " + (end-start));
+      
+      setTimeout(test_global_variable_read_from_closure, 1000);
+    }
+    
+    
+    function test_global_variable_read_from_closure()
+    {
+      var start, end, i, a, 
+          reps = REPS;
+          readGlobal = function() {
+            var a = globalVariable;
+          }
+      
+      
+      start = +new Date();
+      for(i=0; i < reps; i++)
+      {
+        readGlobal();
+      }
+      end = +new Date;
+      
+      console.log("test_global_variable_read_from_closure: " + (end-start));
+    }
+    
+    
+    
+    
+    
+    
+    
+  
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>object constructor vs. object literal</title>
+</head>
+<body>
+
+  <script type="text/javascript">
+
+
+  
+  var REPS = 2000000,
+      forTime;
+
+    (function() {
+      setTimeout(test_create_empty_object_with_constructor, 1000);
+      
+      
+      var start, end, i, o, 
+          reps = REPS;
+      
+      start = +new Date();
+      for(i=0; i < reps; i++)
+      {
+       
+      }
+      end = +new Date;
+      forTime = end-start;
+      console.log("empty for: " + (forTime));
+      
+    })()
+    
+    
+    
+    
+    
+    function test_create_empty_object_with_constructor()
+    {
+      var start, end, i, o, 
+          reps = REPS
+      
+      start = +new Date();
+      for(i=0; i < reps; i++)
+      {
+        o = new Object();
+      }
+      end = +new Date;
+      
+      console.log("test_create_empty_object_with_constructor: " + (end-start-forTime));
+      
+      setTimeout(test_create_empty_object_as_literal, 1000);
+    }
+    
+    
+    
+    
+    function test_create_empty_object_as_literal()
+    {
+      var start, end, i, o, 
+          reps = REPS
+      
+      start = +new Date();
+      for(i=0; i < reps; i++)
+      {
+        o = {};
+      }
+      end = +new Date;
+      
+      console.log("test_create_empty_object_as_literal: " + (end-start-forTime));
+      
+      setTimeout(test_create_and_populate_object_with_constructor, 1000);
+    }
+    
+
+
+
+
+    function test_create_and_populate_object_with_constructor()
+    {
+      var start, end, i, o, 
+          reps = REPS
+      
+      start = +new Date();
+      for(i=0; i < reps; i++)
+      {
+        o = new Object();
+        o.a = 100;
+        o.b = 100;
+        o.c = 100;
+      }
+      end = +new Date;
+      
+      console.log("test_create_and_populate_object_with_constructor: " + (end-start-forTime));
+      
+      setTimeout(test_create_and_populate_object_as_literal, 1000);
+    }
+    
+    
+    
+    
+    
+    
+    
+    function test_create_and_populate_object_as_literal()
+    {
+      var start, end, i, o, 
+          reps = REPS
+      
+      start = +new Date();
+      for(i=0; i < reps; i++)
+      {
+        o = {a: 100, b: 100, c: 100};
+      }
+      end = +new Date;
+      
+      console.log("test_create_and_populate_object_as_literal: " + (end-start-forTime));
+    }    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+  </script>
+
+</body>
+</html>

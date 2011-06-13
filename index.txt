@@ -1,0 +1,28 @@
+Loading
+	Top
+	Bottom
+	defer
+	async
+	lazy loading scripts with dynamic script tags
+Test Harness
+different data storage options
+Object literals
+Scope
+	Scope Chains
+	Closures
+Prototype Chains
+Loops
+DOM
+	Minimize dom access
+	Use Local variables to cache dom acces
+	Repaints and Reflows
+		When they happen
+		Reading certain info can trigger it as well
+	Styles
+	Remove from dom and operate
+	Use document fragment
+	Use absolute positioning in animation
+Browser UI thread
+	
+		
+		

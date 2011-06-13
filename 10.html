@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>prototype chain</title>
+</head>
+<body>
+
+  <script type="text/javascript">
+
+    (function() {
+      setTimeout(test_instance_member, 1000);
+    })()
+    
+    var REPS = 200000000;
+
+    
+    
+    
+    
+    
+    var Animal = function(name) {
+      this.name = name;
+    }
+    
+    Animal.prototype.getName = function() {
+      return this.name;
+    }
+    
+    var Dog = function(name) {
+      Animal.call(this, name);
+    }
+    
+    Dog.prototype = new Animal();
+    Dog.prototype.constructor = Animal;
+    
+    Dog.prototype.bark = function() {
+      return 'bow wow !!';
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    function test_instance_member()
+    {
+      var start, end, i, a, 
+          reps = REPS
+          dog = new Dog("bruno");
+      
+      start = +new Date();
+      for(i=0; i < reps; i++)
+      {
+        dog.bark
+      }
+      end = +new Date;
+      
+      console.log("test_instance_member: " + (end-start));
+      
+      setTimeout(test_prototype_member1, 1000);
+    }
+    
+    
+    function test_prototype_member1()
+    {
+      var start, end, i, a, 
+          reps = REPS
+          dog = new Dog("bruno");
+      
+      start = +new Date();
+      for(i=0; i < reps; i++)
+      {
+        dog.getName
+      }
+      end = +new Date;
+      
+      console.log("test_prototype_member1: " + (end-start));
+      
+      setTimeout(test_prototype_member2, 1000);
+    }
+    
+    function test_prototype_member2()
+    {
+      var start, end, i, a, 
+          reps = REPS
+          dog = new Dog("bruno");
+      
+      start = +new Date();
+      for(i=0; i < reps; i++)
+      {
+        dog.toString
+      }
+      end = +new Date;
+      
+      console.log("test_prototype_member2: " + (end-start));
+    }
+    
+    
+    
+    
+    
+    
+  
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>different data storage options</title>
+</head>
+<body>
+
+  <script type="text/javascript">
+
+    (function() {
+      setTimeout(test_read_number_literal, 1000);
+    })()
+    
+    var REPS = 20000000;
+    
+    function test_read_number_literal()
+    {
+      var start, end, i, a, 
+          reps = REPS
+      
+      start = +new Date();
+      for(i=0; i < reps; i++)
+      {
+        a = 100;
+      }
+      end = +new Date;
+      
+      console.log("test_read_number_literal: " + (end-start));
+      
+      setTimeout(test_read_number_variable, 1000);
+    }
+    
+    function test_read_number_variable()
+    {
+      var start, end, i, a, 
+          reps = REPS, 
+          localNumberVariable = 100;
+      
+      start = +new Date();
+      for(i=0; i < reps; i++)
+      {
+        a = localNumberVariable;
+      }
+      end = +new Date;
+      
+      console.log("test_read_number_variable: " + (end-start));
+      
+      setTimeout(test_read_number_in_array, 1000);
+    }
+    
+    function test_read_number_in_array()
+    {
+      var start, end, i, a, 
+          reps = REPS,
+          localArrayVariable = [100];
+      
+      start = +new Date();
+      for(i=0; i < reps; i++)
+      {
+        a = localArrayVariable[0];
+      }
+      end = +new Date;
+      
+      console.log("test_read_number_in_array: " + (end-start));
+      
+      setTimeout(test_read_number_in_object, 1000);
+    }
+    
+    function test_read_number_in_object()
+    {
+      var start, end, i, a, 
+          reps = REPS,
+          localObjectVariable = {k: 100};
+      
+      start = +new Date();
+      for(i=0; i < reps; i++)
+      {
+        a = localObjectVariable.k;
+      }
+      end = +new Date;
+      
+      console.log("test_read_number_in_object: " + (end-start));      
+    }
+  
+  </script>
+
+</body>
+</html>

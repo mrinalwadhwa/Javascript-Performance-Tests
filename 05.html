@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>simple test harness</title>
+</head>
+<body>
+
+  <script type="text/javascript">
+
+    (function() {
+      setTimeout(simple_perf_test, 2000);
+    })()
+    
+    function simple_perf_test()
+    {
+      var start, end, i;
+      
+      start = +new Date();
+      for(i=0; i < 100000; i++)
+      {
+        // run the operation to measure
+      }
+      end = +new Date;
+      
+      console.log("simple_perf_test: " + (end-start))
+    }
+  
+  
+  
+  </script>
+
+</body>
+</html>
